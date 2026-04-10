@@ -67,15 +67,15 @@ app.get("/users", (req, res) => {
   }
 });
 
-app.get("/users/:id/:job", (req, res) => {
-  const id = req.params["id"]; //or req.params.id
-  const job = req.params["job"];
-  let result1 = findUserById(id);
+app.get("/users/:name/:job", (req, res) => {
+  const name = req.params.name;
+  const job = req.params.job;
+  let result1 = findUserByName(name);
   let result2 = findUserByJob(job);
   if (result1 === undefined || result2 === undefined) {
     res.status(404).send("Resource not found.");
   } else {
-    res.send();
+    res.send(result1);
   }
 });
 
